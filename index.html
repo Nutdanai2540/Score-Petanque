@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Petanque Scoreboard - PEA Ban Phaeng</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+        .scoreboard {
+            text-align: center;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 600px;
+        }
+        .team {
+            margin: 20px 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .team-name {
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+        .score {
+            font-size: 2em;
+            font-weight: bold;
+            background-color: #4caf50;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+        }
+        .controls {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+        button {
+            padding: 10px;
+            font-size: 1em;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .increase {
+            background-color: #007bff;
+            color: white;
+        }
+        .decrease {
+            background-color: #ff5722;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <div class="scoreboard">
+        <h1>PEA Ban Phaeng - Petanque Scoreboard</h1>
+        
+        <div class="team">
+            <span class="team-name">Team A</span>
+            <span class="score" id="scoreA">0</span>
+            <div class="controls">
+                <button class="increase" onclick="changeScore('A', 1)">+1</button>
+                <button class="decrease" onclick="changeScore('A', -1)">-1</button>
+            </div>
+        </div>
+
+        <div class="team">
+            <span class="team-name">Team B</span>
+            <span class="score" id="scoreB">0</span>
+            <div class="controls">
+                <button class="increase" onclick="changeScore('B', 1)">+1</button>
+                <button class="decrease" onclick="changeScore('B', -1)">-1</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function changeScore(team, delta) {
+            const scoreElement = document.getElementById(`score${team}`);
+            let currentScore = parseInt(scoreElement.textContent, 10);
+            currentScore += delta;
+            if (currentScore < 0) currentScore = 0;
+            scoreElement.textContent = currentScore;
+        }
+    </script>
+</body>
+</html>
